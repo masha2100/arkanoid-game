@@ -12,3 +12,11 @@ WIDTH, HEIGHT = 1000, 700  # Менше вікно для зручності
 fps = 60
 sc = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE)
 clock = pygame.time.Clock()
+paddle_w = 300
+paddle_h = 30
+paddle_speed = 15
+paddle = pygame.Rect(WIDTH // 2 - paddle_w // 2, HEIGHT - paddle_h - 10, paddle_w, paddle_h)
+
+for event in pygame.event.get():
+    if event.type == pygame.MOUSEMOTION:
+        paddle.centerx = event.pos[0]  # Рух платформи мишею
