@@ -21,11 +21,5 @@ for event in pygame.event.get():
     if event.type == pygame.MOUSEMOTION:
         paddle.centerx = event.pos[0]  # Рух платформи мишею
 
-ball_radius = 20
-ball_speed = 6
-ball_rect = int(ball_radius * 2 ** 0.5)
-ball = pygame.Rect(rnd(ball_rect, WIDTH - ball_rect), HEIGHT // 2, ball_rect, ball_rect)
-dx, dy = 1, -1
-
-ball.x += ball_speed * dx
-ball.y += ball_speed * dy
+block_list = [pygame.Rect(10 + 120 * i, 10 + 70 * j, 100, 50) for i in range(8) for j in range(4)]
+color_list = [(rnd(30, 256), rnd(30, 256), rnd(30, 256)) for _ in range(8 * 4)]
