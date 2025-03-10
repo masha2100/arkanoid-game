@@ -107,3 +107,9 @@ if not len(block_list):
     pygame.quit()
     exit()
 
+if ball.bottom > HEIGHT:
+    lives -= 1
+    ball.x = rnd(ball_rect, WIDTH - ball_rect)
+    ball.y = HEIGHT // 2
+    dx, dy = 1, -1
+    paddle.x = WIDTH // 2 - paddle_w // 2  # Центруємо платформу
