@@ -57,3 +57,6 @@ if ball.bottom > HEIGHT:
         pygame.display.flip()
         pygame.time.wait(2000)
 
+font = pygame.font.SysFont('Arial', 30)
+lives_text = font.render(f"Lives: {lives}  Score: {score}", True, pygame.Color('white'))
+sc.blit(lives_text, (10, 10))
