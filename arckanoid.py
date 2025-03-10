@@ -38,6 +38,9 @@ lives = 3
 score = 0
 font = pygame.font.SysFont('Arial', 30)
 
+img = pygame.image.load('1.jpg').convert()
+
+
 # Функція виявлення зіткнень
 def detect_collision(dx, dy, ball, rect):
     if dx > 0:
@@ -133,8 +136,6 @@ while True:
         dx, dy = 1, -1
         paddle.x = WIDTH // 2 - paddle_w // 2
     
-    img = pygame.image.load('1.jpg').convert()
-
     # Перевірка на перемогу
     if not len(block_list):
         messagebox.showinfo("Перемога!", "Ви виграли!")
