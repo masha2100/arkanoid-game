@@ -68,3 +68,7 @@ def restart_game():
     block_list = [pygame.Rect(10 + 120 * i, 10 + 70 * j, 100, 50) for i in range(8) for j in range(4)]
     color_list = [(rnd(30, 256), rnd(30, 256), rnd(30, 256)) for _ in range(8 * 4)]
 
+start = messagebox.askyesno("Початок гри", "Хочете розпочати гру?")
+if not start:
+    pygame.quit()
+    exit()
