@@ -23,3 +23,7 @@ for event in pygame.event.get():
 
 block_list = [pygame.Rect(10 + 120 * i, 10 + 70 * j, 100, 50) for i in range(8) for j in range(4)]
 color_list = [(rnd(30, 256), rnd(30, 256), rnd(30, 256)) for _ in range(8 * 4)]
+
+if ball.colliderect(paddle) and dy > 0:
+    dx, dy = detect_collision(dx, dy, ball, paddle)
+
