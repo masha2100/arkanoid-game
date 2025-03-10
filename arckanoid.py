@@ -47,3 +47,13 @@ if hit_index != -1:
 if hit_index != -1:
     score += 10  # +10 балів за знищений блок
     fps += 2
+
+if ball.bottom > HEIGHT:
+    lives -= 1
+    if lives == 0:
+        sc.fill((0, 0, 0))  # Чорний екран
+        game_over_text = font.render("GAME OVER", True, pygame.Color('red'))
+        sc.blit(game_over_text, (WIDTH // 2 - 100, HEIGHT // 2))
+        pygame.display.flip()
+        pygame.time.wait(2000)
+
