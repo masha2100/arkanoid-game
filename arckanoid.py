@@ -44,3 +44,6 @@ if hit_index != -1:
     color_list.pop(hit_index)
     dx, dy = detect_collision(dx, dy, ball, hit_rect)
 
+if hit_index != -1:
+    score += 10  # +10 балів за знищений блок
+    fps += 2
