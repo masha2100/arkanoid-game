@@ -60,3 +60,11 @@ if ball.bottom > HEIGHT:
 font = pygame.font.SysFont('Arial', 30)
 lives_text = font.render(f"Lives: {lives}  Score: {score}", True, pygame.Color('white'))
 sc.blit(lives_text, (10, 10))
+
+def restart_game():
+    global lives, score, block_list, color_list
+    lives = 3
+    score = 0
+    block_list = [pygame.Rect(10 + 120 * i, 10 + 70 * j, 100, 50) for i in range(8) for j in range(4)]
+    color_list = [(rnd(30, 256), rnd(30, 256), rnd(30, 256)) for _ in range(8 * 4)]
+
