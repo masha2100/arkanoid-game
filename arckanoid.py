@@ -101,3 +101,9 @@ game_over_text = font.render("GAME OVER", True, pygame.Color('red'))
 sc.blit(game_over_text, (WIDTH // 2 - 100, HEIGHT // 2))
 pygame.display.flip()
 pygame.time.wait(2000)
+
+if not len(block_list):
+    messagebox.showinfo("Перемога!", "Ви виграли!")
+    pygame.quit()
+    exit()
+
