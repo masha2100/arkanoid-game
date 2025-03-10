@@ -36,13 +36,13 @@ block_list = [pygame.Rect(10 + 120 * i, 10 + 70 * j, 100, 50) for i in range(8) 
 color_list = [(rnd(30, 256), rnd(30, 256), rnd(30, 256)) for _ in range(8 * 4)]
 
 if ball.colliderect(paddle) and dy > 0:
-    dx, dy = detect_collision(dx, dy, ball, paddle)
+    dx, dy = detect_collision(dx, dy, ball, paddle) # type: ignore
 
 hit_index = ball.collidelist(block_list)
 if hit_index != -1:
     hit_rect = block_list.pop(hit_index)
     color_list.pop(hit_index)
-    dx, dy = detect_collision(dx, dy, ball, hit_rect)
+    dx, dy = detect_collision(dx, dy, ball, hit_rect) # type: ignore
 
 if hit_index != -1:
     score += 10  # +10 балів за знищений блок
@@ -52,7 +52,7 @@ if ball.bottom > HEIGHT:
     lives -= 1
     if lives == 0:
         sc.fill((0, 0, 0))  # Чорний екран
-        game_over_text = font.render("GAME OVER", True, pygame.Color('red'))
+        game_over_text = font.render("GAME OVER", True, pygame.Color('red')) # type: ignore
         sc.blit(game_over_text, (WIDTH // 2 - 100, HEIGHT // 2))
         pygame.display.flip()
         pygame.time.wait(2000)
@@ -67,6 +67,8 @@ def restart_game():
     score = 0
     block_list = [pygame.Rect(10 + 120 * i, 10 + 70 * j, 100, 50) for i in range(8) for j in range(4)]
     color_list = [(rnd(30, 256), rnd(30, 256), rnd(30, 256)) for _ in range(8 * 4)]
+
+img = pygame.image.load('1.jpg').convert()
 
 start = messagebox.askyesno("Початок гри", "Хочете розпочати гру?")
 if not start:
