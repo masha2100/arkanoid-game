@@ -73,6 +73,12 @@ if not start:
     pygame.quit()
     exit()
 
+for event in pygame.event.get():
+    if event.type == pygame.QUIT:
+        pygame.quit()
+        exit()
+
+
 def detect_collision(dx, dy, ball, rect):
     if dx > 0:
         delta_x = ball.right - rect.left
@@ -91,3 +97,7 @@ def detect_collision(dx, dy, ball, rect):
         dx = -dx
     return dx, dy
 
+game_over_text = font.render("GAME OVER", True, pygame.Color('red'))
+sc.blit(game_over_text, (WIDTH // 2 - 100, HEIGHT // 2))
+pygame.display.flip()
+pygame.time.wait(2000)
