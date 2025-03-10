@@ -120,3 +120,4 @@ if key[pygame.K_LEFT] and paddle.left > 0:
 if key[pygame.K_RIGHT] and paddle.right < WIDTH:
     paddle.right += paddle_speed
 
+[pygame.draw.rect(sc, color_list[color], block) for color, block in enumerate(block_list)]
