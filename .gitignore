@@ -1,0 +1,12 @@
+echo "venv/
+pycache/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+.env.*
+.idea/
+.vscode/
+assets/*.tmp
+" > .gitignore
