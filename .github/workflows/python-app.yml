@@ -33,12 +33,16 @@ jobs:
     - name: 🧹 Перевірка стилю коду з flake8
       run: |
         mkdir -p lint-reports
-        flake8 . --format=html --htmldir=lint-reports
+        flake8 . --format=html --htmldir=lint-reports || true
 
-    - name: 📤 Завантажити артефакти (звіти)
+    - name: 📤 Завантажити звіт про тести
       uses: actions/upload-artifact@v4
       with:
-        name: test-lint-reports
-        path: |
-          test-reports/
-          lint-reports/
+        name: pytest-report
+        path: test-reports/
+
+    - name: 📤 Завантажити звіт про лінтінг
+      uses: actions/upload-artifact@v4
+      with:
+        name: flake8-report
+        path: lint-reports/
