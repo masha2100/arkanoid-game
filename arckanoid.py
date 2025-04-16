@@ -2,6 +2,7 @@ import pygame
 import tkinter as tk
 from tkinter import messagebox
 from random import randrange as rnd
+from arkanoid_logic import detect_collision
 
 pygame.init()
 pygame.font.init()
@@ -41,24 +42,6 @@ font = pygame.font.SysFont('Arial', 30)
 img = pygame.image.load('1.jpg').convert()
 
 
-# Функція виявлення зіткнень
-def detect_collision(dx, dy, ball, rect):
-    if dx > 0:
-        delta_x = ball.right - rect.left
-    else:
-        delta_x = rect.right - ball.left
-    if dy > 0:
-        delta_y = ball.bottom - rect.top
-    else:
-        delta_y = rect.bottom - ball.top
-
-    if abs(delta_x - delta_y) < 10:
-        dx, dy = -dx, -dy
-    elif delta_x > delta_y:
-        dy = -dy
-    elif delta_y > delta_x:
-        dx = -dx
-    return dx, dy
 
 # Функція перезапуску гри
 def restart_game():
