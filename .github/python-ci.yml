@@ -1,0 +1,44 @@
+name: Python CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: ⬇️ Checkout репозиторій
+      uses: actions/checkout@v3
+
+    - name: 🐍 Встановити Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: 📦 Встановити залежності
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-html flake8 flake8-html
+
+    - name: ✅ Запустити тести з HTML-звітом
+      run: |
+        mkdir -p test-reports
+        pytest --html=test-reports/report.html --self-contained-html
+
+    - name: 🧹 Перевірка стилю коду з flake8
+      run: |
+        mkdir -p lint-reports
+        flake8 . --format=html --htmldir=lint-reports
+
+    - name: 📤 Завантажити артефакти (звіти)
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-lint-reports
+        path: |
+          test-reports/
+          lint-reports/
