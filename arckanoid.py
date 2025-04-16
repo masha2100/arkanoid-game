@@ -62,7 +62,7 @@ if not start:
 
 # Основний ігровий цикл
 while True:
-    sc.fill((0, 0, 0))  # Очищення екрану
+    sc.blit(img, (0, 0))
 
     # Обробка подій
     for event in pygame.event.get():
