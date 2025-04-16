@@ -39,7 +39,7 @@ lives = 3
 score = 0
 font = pygame.font.SysFont('Arial', 30)
 
-img = pygame.image.load('1.jpg').convert()
+img = pygame.image.load('assets/1.jpg').convert()
 
 
 
