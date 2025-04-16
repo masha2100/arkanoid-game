@@ -9,6 +9,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+<<<<<<< HEAD
+=======
+
+>>>>>>> b7668819558b2b6e3d946c895c7c3600ad0cabd9
     steps:
     - name: ⬇️ Checkout репозиторій
       uses: actions/checkout@v3
@@ -27,12 +31,17 @@ jobs:
     - name: ✅ Запустити тести з HTML-звітом
       run: |
         mkdir -p test-reports
+<<<<<<< HEAD
         pytest --html=test-reports/report.html --self-contained-html || echo "::set-output name=test_status::❌ Тести провалено"
       id: run_tests
+=======
+        pytest --html=test-reports/report.html --self-contained-html
+>>>>>>> b7668819558b2b6e3d946c895c7c3600ad0cabd9
 
     - name: 🧹 Перевірка стилю коду з flake8
       run: |
         mkdir -p lint-reports
+<<<<<<< HEAD
         flake8 . --format=html --htmldir=lint-reports || echo "::set-output name=lint_status::⚠️ Лінтінг знайшов проблеми"
       id: run_lint
 
@@ -69,3 +78,14 @@ jobs:
             repo: context.repo.repo,
             body: body
           });
+=======
+        flake8 . --format=html --htmldir=lint-reports
+
+    - name: 📤 Завантажити артефакти (звіти)
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-lint-reports
+        path: |
+          test-reports/
+          lint-reports/
+>>>>>>> b7668819558b2b6e3d946c895c7c3600ad0cabd9
